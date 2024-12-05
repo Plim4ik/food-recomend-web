@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Страховая компания{% endblock %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+<div class="container my-5">
+    <div class="text-center">
+        <h1 class="mb-4">Добро пожаловать в нашу страховую компанию!</h1>
+        <p class="lead">Надежная защита ваших интересов и имущества.</p>
+        <a href="{% url 'insurance_list' %}" class="btn btn-primary">Посмотреть все страховые продукты</a>
+    </div>
+</div>
+
+<!-- Блок: Преимущества -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <i class="bi bi-shield-check display-4 text-primary"></i>
+            <h4 class="mt-3">Надежная защита</h4>
+            <p>Мы предоставляем страховые полисы, которые обеспечивают вам полное спокойствие.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <i class="bi bi-piggy-bank display-4 text-success"></i>
+            <h4 class="mt-3">Экономия</h4>
+            <p>У нас лучшие цены на рынке. Мы заботимся о вашем бюджете.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <i class="bi bi-people display-4 text-info"></i>
+            <h4 class="mt-3">Клиентоориентированность</h4>
+            <p>Мы всегда на связи, чтобы ответить на ваши вопросы и помочь вам.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Объединенный блок: О компании и Почему мы -->
+<div class="container my-5">
+    <div class="row">
+        <!-- О компании -->
+        <div class="col-md-6">
+            <h2>О компании</h2>
+            <p>Наша страховая компания — это более 25 лет опыта на рынке и тысячи довольных клиентов. Мы стремимся предоставлять нашим клиентам надежные и прозрачные страховые услуги. Наши основные ценности — это доверие, инновации и клиентоориентированность.</p>
+            <p>Мы предлагаем широкий выбор страховых продуктов: от личного страхования до защиты бизнеса. Наша цель — защитить ваши интересы и обеспечить вашу уверенность в будущем.</p>
+        </div>
+        <!-- Почему мы -->
+        <div class="col-md-6">
+            <h2>Почему мы?</h2>
+            <ul class="list-unstyled">
+                <li><i class="bi bi-check-circle text-success"></i> Мы гарантируем надежность и прозрачность всех наших услуг.</li>
+                <li><i class="bi bi-check-circle text-success"></i> Ваша уверенность в завтрашнем дне — наш главный приоритет.</li>
+                <li><i class="bi bi-check-circle text-success"></i> Доступные цены и гибкие страховые решения для каждого клиента.</li>
+                <li><i class="bi bi-check-circle text-success"></i> Индивидуальный подход к каждому клиенту.</li>
+                <li><i class="bi bi-check-circle text-success"></i> Быстрое и удобное оформление полисов.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Блок: Наша команда -->
+<div class="container my-5 bg-light py-5">
+    <div class="text-center">
+        <h2>Наша команда</h2>
+        <p class="lead">Профессионалы, которые заботятся о вас.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h5>Иван Иванов</h5>
+            <p>Генеральный директор</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <h5>Анна Смирнова</h5>
+            <p>Руководитель отдела страхования</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <h5>Сергей Кузнецов</h5>
+            <p>Специалист по клиентскому сервису</p>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+

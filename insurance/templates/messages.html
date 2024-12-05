@@ -1,0 +1,31 @@
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} text-center fade show fade-out" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Скрипт для автоматического скрытия сообщений -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Найдем все элементы с классом "alert"
+        const alerts = document.querySelectorAll('.alert');
+
+        alerts.forEach(function (alert) {
+            // Таймер для автоматического скрытия сообщений (5 секунд)
+            setTimeout(function () {
+                // Убираем класс "show" для плавной анимации скрытия
+                alert.classList.remove('show');
+                
+                // Удаляем элемент из DOM после завершения анимации (0.5 секунды)
+                setTimeout(function () {
+                    alert.remove();
+                }, 500);  // Задержка для завершения анимации
+            }, 5000);  // Время до исчезновения (5000 мс = 5 секунд)
+        });
+    });
+</script>

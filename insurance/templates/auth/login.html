@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Вход в систему{% endblock %}
+
+
+{% block content %}
+
+
+{% include 'messages.html' %}
+
+
+<section id="auth" class="d-flex justify-content-center" style="min-height: auto; padding-top: 50px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Вход в систему</h3>
+                        <form method="post" action="{% url 'login_page_view' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Электронная почта</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Введите ваш email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Пароль</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Введите ваш пароль" required>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Запомнить меня</label>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Войти</button>
+                            </div>
+                        </form>
+                        <p class="text-center mt-3">
+                            <a class="text-muted">Забыли пароль?</a>
+                        </p>
+                        <p class="text-center mt-3">
+                            Нет аккаунта? <a href="{% url 'register_page_view' %}" class="text-primary">Зарегистрируйтесь</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

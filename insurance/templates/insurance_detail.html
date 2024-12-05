@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ insurance.name }}{% endblock %}
+
+{% block content %}
+{% include 'messages.html' %}
+<div class="container my-5">
+    <h1>{{ insurance.name }}</h1>
+    <p>{{ insurance.description }}</p>
+    <p><strong>Цена:</strong> {{ insurance.price }} ₽</p>
+    <p><strong>Дата создания:</strong> {{ insurance.created_at|date:"d.m.Y H:i" }}</p>
+    <p><strong>Последнее обновление:</strong> {{ insurance.updated_at|date:"d.m.Y H:i" }}</p>
+    <a href="{% url 'insurance_list' %}" class="btn btn-secondary">Вернуться к списку</a>
+</div>
+{% endblock %}

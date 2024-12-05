@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<section id="auth" class="d-flex justify-content-center" style="min-height: auto; padding-top: 50px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Регистрация</h3>
+                        <form method="post" action="{% url 'register_page_view' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="reg_email" class="form-label">Электронная почта</label>
+                                <input type="email" class="form-control" id="reg_email" name="email" placeholder="Введите ваш email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_first_name" class="form-label">Имя</label>
+                                <input type="text" class="form-control" id="reg_first_name" name="first_name" placeholder="Введите ваше имя" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_last_name" class="form-label">Фамилия</label>
+                                <input type="text" class="form-control" id="reg_last_name" name="last_name" placeholder="Введите вашу фамилию" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_city" class="form-label">Город</label>
+                                <input type="text" class="form-control" id="reg_city" name="city" placeholder="Введите ваш город">
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_address" class="form-label">Адрес</label>
+                                <input type="text" class="form-control" id="reg_address" name="address" placeholder="Введите ваш адрес">
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_password" class="form-label">Пароль</label>
+                                <input type="password" class="form-control" id="reg_password" name="password1" placeholder="Придумайте пароль" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reg_password_confirm" class="form-label">Подтвердите пароль</label>
+                                <input type="password" class="form-control" id="reg_password_confirm" name="password2" placeholder="Повторите пароль" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+                            </div>
+                        </form>
+                        <p class="text-center mt-3">
+                            Уже есть аккаунт? <a href="{% url 'login_page_view' %}" class="text-primary">Войдите</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
