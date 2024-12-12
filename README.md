@@ -61,6 +61,7 @@ python manage.py runserver
 - Django==5.1.4
 - sqlparse==0.5.2
 - tzdata==2024.2
+- pillow==11.0.0
 
 ### Данные для входа в админ-панель
 
