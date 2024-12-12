@@ -1,86 +1,42 @@
-
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
 {% block title %}WannaFood{% endblock %}
-
-
-
-<style>
-body {
-    background: repeating-linear-gradient(45deg, #f8f9fa, #f8f9fa 10px, #ececec 10px, #ececec 20px);
-    font-family: 'Bahnscript', sans-serif;
-    color: white;
-    text-align: center;
-}
-
-h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-}
-
-.btn-category {
-    background-color: #262526;
-    color: white;
-    font-size: 1.2rem;
-    margin: 0.5rem auto;
-    width: 60%;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-category:hover, .btn-category.active {
-    background-color: #d9534f;
-    transform: scale(1.05);
-}
-
-.filter-options {
-    display: none;
-    margin-top: 1rem;
-}
-
-.filter-options.active {
-    display: block;
-}
-
-.filter-options .form-check {
-    margin: 0.5rem 0;
-}
-</style>
-
-
 
 {% block content %}
 <div class="container mt-4">
     <h1 class="text-center mb-4" style="font-family: 'Bahnscript', sans-serif; color: #333;">WannaFood</h1>
 
     <form method="get" id="filter-form">
-        <div class="accordion" id="categoryAccordion">
+        <div class="row g-3">
             {% for category in categories %}
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading-{{ category.id }}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filters-{{ category.id }}" aria-expanded="false" aria-controls="filters-{{ category.id }}">
-                            {{ category.name }}
-                        </button>
-                    </h2>
-                    <div id="filters-{{ category.id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ category.id }}" data-bs-parent="#categoryAccordion">
-                        <div class="accordion-body">
-                            {% for filter in category.filters.all %}
-                                <div class="form-check">
-                                    <input 
-                                        class="form-check-input" 
-                                        type="checkbox" 
-                                        name="filters" 
-                                        value="{{ filter.id }}"
-                                        id="filter-{{ filter.id }}"
-                                        {% if filter.id|stringformat:"s" in selected_filters %}checked{% endif %}>
-                                    <label class="form-check-label" for="filter-{{ filter.id }}">
-                                        {{ filter.name }}
-                                    </label>
-                                </div>
-                            {% endfor %}
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-primary btn-category w-100" data-bs-toggle="collapse" data-bs-target="#filters-{{ category.id }}" aria-expanded="false" aria-controls="filters-{{ category.id }}">
+                        {{ category.name }}
+                    </button>
+                    <div id="filters-{{ category.id }}" class="collapse mt-2">
+                        <div class="card">
+                            <div class="card-body">
+                                {% for filter in category.filters.all %}
+                                    <div class="form-check">
+                                        <input 
+                                            class="form-check-input" 
+                                            type="checkbox" 
+                                            name="filters" 
+                                            value="{{ filter.id }}" 
+                                            id="filter-{{ filter.id }}"
+                                            {% if filter.id|stringformat:"s" in selected_filters %}checked{% endif %}>
+                                        <label class="form-check-label" for="filter-{{ filter.id }}">
+                                            {{ filter.name }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,14 +44,14 @@ h1 {
         </div>
 
         <div class="mt-4 text-center">
-            <button type="submit" class="btn btn-primary me-2">Применить фильтры</button>
-            <a href="?random=1" class="btn btn-secondary">Случайное блюдо</a>
+            <button type="submit" class="btn btn-primary btn-category me-2">Применить фильтры</button>
+            <a href="?random=1" class="btn btn-primary btn-category">Случайное блюдо</a>
         </div>
     </form>
 
     <div class="food-list mt-5">
         {% if foods.exists %}
-            <h3 class="text-center mb-4">Найденные блюда:</h3>
+            <h3 class="text-center text-dark mb-4">Найденные блюда:</h3>
             <div class="row justify-content-center">
                 {% for food in foods %}
                     <div class="col-md-4 mb-4">
