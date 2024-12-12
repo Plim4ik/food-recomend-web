@@ -1,4 +1,4 @@
-# Insurance Web
+# Food Recomend Web
 
 ## Установка и настройка проекта
 
