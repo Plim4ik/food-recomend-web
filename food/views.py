@@ -8,8 +8,8 @@ def food_list(request):
     foods = Food.objects.all()
 
     if random_food:
-        # Рандомное блюдо
-        foods = [random.choice(foods)] if foods.exists() else []
+        # Рандомное блюдо без учета фильтров
+        foods = [random.choice(list(foods))] if foods.exists() else []
     elif filters:
         # Фильтрация по выбранным фильтрам
         foods = foods.filter(filters__id__in=filters).distinct()
@@ -21,6 +21,7 @@ def food_list(request):
         'categories': categories,
         'selected_filters': filters,
     })
+
 
 
 def food_detail(request, food_id):
