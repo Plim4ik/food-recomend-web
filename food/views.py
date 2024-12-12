@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Food, Category
 import random
 
@@ -21,3 +21,8 @@ def food_list(request):
         'categories': categories,
         'selected_filters': filters,
     })
+
+
+def food_detail(request, food_id):
+    food = get_object_or_404(Food, id=food_id)
+    return render(request, 'food_detail.html', {'food': food})

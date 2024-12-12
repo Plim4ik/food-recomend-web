@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ food.name }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="row w-100">
+        <div class="col-md-12 text-center">
+            <img src="{{ food.image.url }}" class="img-fluid" alt="{{ food.name }}">
+            <div class="mt-3">
+                <h1 class="text-dark">{{ food.name }}</h1>
+                <p class="text-dark"><strong>Описание:</strong> {{ food.description }}</p>
+                <p class="text-dark"><strong>Состав:</strong> {{ food.composition }}</p>
+                <p class="text-dark"><strong>Ссылка на рецепт:</strong> <a href="{{ food.recipe_url }}" target="_blank">{{ food.recipe_url }}</a></p>                
+                <a href="{% url 'food_list' %}" class="btn btn-category">Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -31,10 +31,13 @@ class Filter(models.Model):
 class Food(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
     description = models.TextField(verbose_name='Описание', blank=True, null=True)
+    composition = models.TextField(verbose_name='Состав', blank=True, null=True)  # Добавляем состав
+    recipe_url = models.URLField(verbose_name='Ссылка на рецепт', blank=True, null=True)  # Добавляем ссылку на рецепт
+
     image = models.ImageField(upload_to='food_images/', verbose_name='Картинка', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
-    filters = models.ManyToManyField(Filter, related_name='foods', verbose_name='Фильтры')
+    filters = models.ManyToManyField('Filter', related_name='foods', verbose_name='Фильтры')
 
     def image_tag(self):
         if self.image:
