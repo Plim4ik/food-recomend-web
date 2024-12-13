@@ -49,16 +49,18 @@
             <h3 class="text-center text-dark mb-4">Найденные блюда:</h3>
             <div class="row justify-content-center">
                 {% for food in foods %}
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <img src="{{ food.image.url }}" class="card-img-top" alt="{{ food.name }}">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">{{ food.name }}</h5>
-                                <!-- Кнопка "Подробнее" -->
-                                <a href="{% url 'food_detail' food.id %}" class="btn btn-category">Подробнее</a>
+                    {% if food.image %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <img src="{{ food.image.url }}" class="card-img-top" alt="{{ food.name }}">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{ food.name }}</h5>
+                                    <!-- Кнопка "Подробнее" -->
+                                    <a href="{% url 'food_detail' food.id %}" class="btn btn-category">Подробнее</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         {% else %}
