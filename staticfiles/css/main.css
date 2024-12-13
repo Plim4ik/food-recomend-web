@@ -1,10 +1,10 @@
 body {
-    background: repeating-linear-gradient(45deg, #f8f9fa, #f8f9fa 10px, #ececec 10px, #ececec 20px);
+    background: url('/static/img/test.png') no-repeat center center fixed;
+    background-size: cover;
     font-family: 'Bahnscript', sans-serif;
     color: white;
     text-align: center;
 }
-
 h1 {
     font-size: 3rem;
     font-weight: bold;
