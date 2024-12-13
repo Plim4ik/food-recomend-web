@@ -1,18 +1,22 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Food, Category
+from django.db.models import Count
 import random
 
 def food_list(request):
-    filters = request.GET.getlist('filters', [])
-    random_food = request.GET.get('random', None)
+    filters = request.GET.getlist('filters', [])  # Получаем список выбранных фильтров
+    random_food = request.GET.get('random', None)  # Проверяем, запрошено ли случайное блюдо
     foods = Food.objects.all()
 
     if random_food:
         # Рандомное блюдо без учета фильтров
         foods = [random.choice(list(foods))] if foods.exists() else []
     elif filters:
-        # Фильтрация по выбранным фильтрам
-        foods = foods.filter(filters__id__in=filters).distinct()
+        # Строгое соответствие всем выбранным фильтрам
+        filter_count = len(filters)  # Количество выбранных фильтров
+        foods = foods.filter(filters__id__in=filters)
+        foods = foods.annotate(filter_match_count=Count('filters', distinct=True))
+        foods = foods.filter(filter_match_count=filter_count)
 
     categories = Category.objects.prefetch_related('filters')
 
