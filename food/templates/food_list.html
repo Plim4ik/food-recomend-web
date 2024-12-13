@@ -40,12 +40,12 @@
 
         <div class="mt-4 text-center">
             <button type="submit" class="btn btn-primary btn-category me-2">Применить фильтры</button>
-            <a href="?random=1" class="btn btn-primary btn-category">Случайное блюдо</a>
+            <a href="{% url 'food_list' %}?random=1" class="btn btn-primary btn-category">Случайное блюдо</a>
         </div>
     </form>
 
     <div class="food-list mt-5">
-        {% if foods.exists %}
+        {% if foods %}
             <h3 class="text-center text-dark mb-4">Найденные блюда:</h3>
             <div class="row justify-content-center">
                 {% for food in foods %}

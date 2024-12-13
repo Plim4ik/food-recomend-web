@@ -27,7 +27,6 @@ def food_list(request):
     })
 
 
-
 def food_detail(request, food_id):
     food = get_object_or_404(Food, id=food_id)
     return render(request, 'food_detail.html', {'food': food})
